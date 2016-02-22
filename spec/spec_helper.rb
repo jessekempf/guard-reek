@@ -12,7 +12,7 @@ end
 SimpleCov.minimum_coverage 98
 SimpleCov.maximum_coverage_drop 2
 
+require 'guard/compat/test/helper'
 require 'guard/reek'
-
 RSpec.configure do |config|
 end

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Guard::Reek do
-  subject { reek }
+  # subject { reek }
   let(:guard) { described_class.new options }
   let(:options) { {} }
 
@@ -69,10 +69,6 @@ describe Guard::Reek do
       described_class.should_receive(:command).with("paths")
     end
 
-    it "notifies guard the ddsuccess" do
-      described_class.should_receive(:notify)
-    end
-
     after do
       reek
     end
@@ -83,25 +79,5 @@ describe Guard::Reek do
     it { should =~ /-n/ }
     it { should =~ /^reek/ }
     it { should =~ /path$/ }
-  end
-
-  describe ".notify" do
-    context "well done" do
-      subject(:notify) { described_class.notify true }
-      it "notifies the success to notifier" do
-        Guard::Notifier.should_receive(:notify).with(*Guard::Reek::SUCCESS)
-
-        notify
-      end
-    end
-
-    context "something went wrong" do
-      subject(:notify) { described_class.notify false }
-      it "notifies the failure to notifier" do
-        Guard::Notifier.should_receive(:notify).with(*Guard::Reek::FAILED)
-
-        notify
-      end
-    end
   end
 end

@@ -1,4 +1,4 @@
-require 'guard'
+require 'guard/compat/plugin'
 
 module Guard
   # Guard::Reek class, it implements an guard for reek task
@@ -40,21 +40,12 @@ module Guard
     def self.reek(paths)
       result = system command(paths)
 
-      notify(result)
       @last_result = result
       result
     end
 
     def self.command paths
       "reek -n #{paths.uniq.join(' ')}"
-    end
-
-    def self.notify result
-      if result
-        Notifier.notify(*SUCCESS)
-      else
-        Notifier.notify(*FAILED)
-      end
     end
   end
 end

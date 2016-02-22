@@ -17,8 +17,9 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|gem|features)/})
   gem.require_paths = ["lib"]
 
-  gem.add_dependency 'reek'
-  gem.add_dependency 'guard'
+  gem.add_dependency 'reek', '~> 3.0'
+  gem.add_dependency 'guard', '~> 2.1'
+  gem.add_dependency 'guard-compat', '~> 1.1'
 
   gem.add_development_dependency "bundler", "~> 1.3"
   gem.add_development_dependency "guard-rspec"
